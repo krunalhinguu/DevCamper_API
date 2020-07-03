@@ -110,8 +110,6 @@ const BootcampSchema = new mongoose.Schema({
 /* Create Bootcamp slug from the name */
 
 BootcampSchema.pre("save", function(next) {
-    console.log(this);
-
     this.slug = slugify(this.name, { lower: true });
     next();
 });
@@ -137,7 +135,6 @@ BootcampSchema.pre("save", async function(next) {
 
 /* cascade delete courses when a bootcamp id deleted */
 BootcampSchema.pre("remove", async function(next) {
-    console.log(`Course being removed from ${this._id}`);
     await this.model("Course").deleteMany({ bootcamp: this._id });
     next();
 });

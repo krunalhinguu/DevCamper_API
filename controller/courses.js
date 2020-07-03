@@ -130,8 +130,6 @@ exports.deleteCourse = asyncHandler(async(req, res, next) => {
             404
         );
     }
-    //console.log(course.user.id);
-    console.log(course.user.toString());
 
     /* make sure user is bootcamp owner */
     if (course.user.toString() !== req.user.id && req.user.role !== "admin") {

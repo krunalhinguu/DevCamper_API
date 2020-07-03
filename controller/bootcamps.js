@@ -68,13 +68,6 @@ exports.updateBootcamp = asyncHandler(async(req, res, next) => {
         );
     }
 
-    console.log(bootcamp.user.toString());
-    console.log(req.user.id);
-    console.log(req.user.role);
-    console.log(
-        bootcamp.user.toString() !== req.user.id && req.user.role !== "admin"
-    );
-
     /* make sure user is bootcamp owner */
     if (bootcamp.user.toString() !== req.user.id && req.user.role !== "admin") {
         return next(
